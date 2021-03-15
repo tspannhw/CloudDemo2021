@@ -15,9 +15,11 @@ TBLPROPERTIES ('kudu.num_tablet_replicas' = '1');
 
 	
 
-CREATE TABLE clouderastatus ( 
+CREATE TABLE cloudstatus ( 
    `uuid` STRING,
 	`ts` TIMESTAMP,  
+	`companyname` STRING,
+	`servicename` STRING,
 `title` STRING, 
 	`description` STRING, 
 `pubdate` STRING, 
