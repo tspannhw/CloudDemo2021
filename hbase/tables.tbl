@@ -1,4 +1,5 @@
 # hbase shell
 create 'stocks', 'stock_details'
 create 'socketcache' ,'socketcache'
+create 'iottest','iot_details'
 exit
