@@ -36,6 +36,7 @@ cd /tmp/resources
 
 cd /opt/demo
 
+git clone https://github.com/tspannhw/CloudDemo2021
 git clone https://github.com/tspannhw/meetup-sensors
 git clone https://github.com/tspannhw/FlinkSQLDemo
 git clone https://github.com/tspannhw/ApacheConAtHome2020
@@ -48,6 +49,7 @@ chmod -R 777 /opt/demo/SmartStocks
 chmod -R 777 /opt/demo/FlinkSQLDemo
 chmod -R 777 /opt/demo/meetup-sensors
 chmod -R 777 /opt/demo/ApacheConAtHome2020
+chmod -R 777 /opt/demo/CloudDemo2021
 chmod -R 777 /opt/demo/retail-dynamic-shelf-pricing
 
 # No Kerberos 
@@ -69,6 +71,8 @@ HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /user
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /user/kafka
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/sensors
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/sensors
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/demo
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/demo
 HADOOP_USER_NAME=hdfs hdfs dfs -chown kafka:kafka /user/kafka
 HADOOP_USER_NAME=hdfs hdfs dfs -chown kafka:kafka /tmp/sensors
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/itemprice
