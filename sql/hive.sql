@@ -24,10 +24,10 @@ CREATE TABLE hv_stocks
   `low` STRING,
    PRIMARY KEY (UUID) DISABLE NOVALIDATE);
 
+
  CREATE EXTERNAL TABLE scada2 
 (
 uuid STRING, 
-	systemtime STRING,  
 	amplitude100 DOUBLE, 
         amplitude500 DOUBLE, 
 	amplitude1000 DOUBLE, 
@@ -39,6 +39,7 @@ uuid STRING,
 	host STRING, 
 	host_name STRING,
         macaddress STRING, 
+	systemtime STRING,  
 	endtime STRING, 
 	runtime STRING, 
 	starttime STRING, 
