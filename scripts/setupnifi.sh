@@ -24,8 +24,8 @@ echo "Download NiFi Toolkit"
 # Download NiFi Toolkit
 #
 cd /opt/demo
-wget https://apache.claz.org/nifi/1.12.1/nifi-toolkit-1.12.1-bin.tar.gz
-tar -xvf /opt/demo/nifi-toolkit-1.12.1-bin.tar.gz 
+wget https://apache.claz.org/nifi/1.13.2/nifi-toolkit-1.13.2-bin.zip
+tar -xvf /opt/demo/nifi-toolkit-1.13.2-bin.tar.gz 
 
 echo "Load Parameter Contexts"
 
@@ -34,7 +34,7 @@ do
 
 echo "Uploading Parameter File $f"
 
-/opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi import-param-context -u http://edge2ai-1.dim.local:8080 -i $f
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi import-param-context -u http://edge2ai-1.dim.local:8080 -i $f
 
 echo "Added."
 echo ""
@@ -52,26 +52,26 @@ echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔�
 
 # sequence
 
-/opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
 
-/opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
 
-/opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
 
 # List all process groups
 
-/opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi pg-list -u http://edge2ai-1.dim.local:8080   
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-list -u http://edge2ai-1.dim.local:8080   
 
 # List parms
 
-/opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi list-param-contexts -u http://edge2ai-1.dim.local:8080 -verbose  
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi list-param-contexts -u http://edge2ai-1.dim.local:8080 -verbose  
 
 # Set parameters to pgs
 # pgid => parameter group id
 # pcid => parameter context id
 
 # manual for now
-# /opt/demo/nifi-toolkit-1.12.1/bin/cli.sh nifi pg-set-param-context -u http://edge2ai-1.dim.local:8080 -verbose -pgid 2c1860b3-7f21-36f4-a0b8-b415c652fc62  -pcid 39f0f296-0177-1000-ffff-ffffdccb6d90
+# /opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-set-param-context -u http://edge2ai-1.dim.local:8080 -verbose -pgid 2c1860b3-7f21-36f4-a0b8-b415c652fc62  -pcid 39f0f296-0177-1000-ffff-ffffdccb6d90
 
 
 # List / Start / Check Process Groups
