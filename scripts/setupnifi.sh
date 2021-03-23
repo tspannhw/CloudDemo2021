@@ -14,7 +14,7 @@ echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔�
 echo ""
 echo ""
 
-yum -y install git curl wget gunzip gzip tar
+yum -y install git curl wget gunzip gzip tar unzip zip
 
 # /opt/demo/nifi-toolkit-1.12.0/bin/cli.sh nifi import-param-context -u http://localhost:8080 -i retail.json
 # https://nifi.apache.org/docs/nifi-docs/html/toolkit-guide.html
@@ -25,7 +25,7 @@ echo "Download NiFi Toolkit"
 #
 cd /opt/demo
 wget https://apache.claz.org/nifi/1.13.2/nifi-toolkit-1.13.2-bin.zip
-tar -xvf /opt/demo/nifi-toolkit-1.13.2-bin.tar.gz 
+unzip /opt/demo/nifi-toolkit-1.13.2-bin.zip
 
 echo "Load Parameter Contexts"
 
