@@ -30,7 +30,7 @@ yum -y install git curl wget
 # Andre's script 
 
 cd /tmp/resources
-./reset-to-lab.sh 12
+./reset-to-lab.sh 99
 
 # Created for edge2ai
 
