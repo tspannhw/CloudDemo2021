@@ -99,5 +99,92 @@ GROUP BY
            
                                                          
                                                          
+SELECT flight_number, flight_origin, flight_destination,
+  TUMBLE_END("eventTimestamp", INTERVAL '5' MINUTE) AS window_end_timestamp
+FROM airplane_flights
+GROUP BY TUMBLE("eventTimestamp", INTERVAL '5' MINUTE)
+           
+SELECT a.web_order_id, a.product_name, a.order_date
+ b.next_shipment_time
+FROM online_orders a, shipment_events b
+WHERE a.shipping_type = 'Priority'
+ AND a.eventTimestamp BETWEEN b.eventTimestamp - INTERVAL '1' HOUR AND b.eventTimestamp
+           
+SELECT *
+FROM airplane_flights a
+WHERE flight_number IS NOT NULL
+GROUP BY HOP(a."timestamp_ms", INTERVAL '15' SECOND, INTERVAL '5' SECOND), flight_number
+           
+-- eventTimestamp is the Kafka timestamp
+-- as unix timestamp. Magically added to every schema.
+SELECT max(eventTimestamp) FROM solar_inputs;
 
+-- make it human readable
+SELECT CAST(max(eventTimestamp) AS varchar) as TS FROM solar_inputs;
+
+-- dete math with interval
+SELECT * FROM payments
+WHERE eventTimestamp > CURRENT_TIMESTAMP-interval '10' second;
+           
+SELECT SUM(CAST(amount AS numeric)) AS payment_volume,
+CAST(TUMBLE_END(eventTimestamp, interval '1' hour) AS varchar) AS ts
+FROM payments
+GROUP BY TUMBLE(eventTimestamp, interval '1' hour);
+                
+SELECT card,
+MAX(amount) as theamount,
+TUMBLE_END(eventTimestamp, interval '5' minute) as ts
+FROM payments
+WHERE lat IS NOT NULL
+AND lon IS NOT NULL
+GROUP BY card, TUMBLE(eventTimestamp, interval '5' minute)
+HAVING COUNT(*) > 4 -- >4==fraud
+                
+-- unnest each array element as separate row
+SELECT b.*, u.*
+ FROM bgp_avro b,
+ UNNEST(b.path) AS u(pathitem)
+                
+ -- union two different virtual tables
+SELECT * FROM clickstream
+WHERE useragent = 'Chrome/62.0.3202.84 Mobile Safari/537.36'
+UNION ALL
+SELECT * FROM clickstream
+WHERE useragent = 'Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36'
+                
+SELECT card,
+SUM(amount)/100 AS miles,
+TUMBLE_END(eventTimestamp, interval '1' day)
+FROM payments
+GROUP BY card, TUMBLE(eventTimestamp, interval '1' day);
+                
+-- join multiple streams
+select o.name,
+       sum(d.clicks),
+       hop_end(r.eventTimestamp, interval '20' second, interval '40' second)
+ from click_stream o join orgs r on o.org_id = r.org_id
+               join models d on d.org_id = r.org_id
+ group by o.name,
+        hop(r.eventTimestamp, interval '20' second, interval '40' second)
+                
+SELECT us_west.user_score+ap_south.user_score
+FROM kafka_in_zone_us_west us_west
+FULL OUTER JOIN kafka_in_zone_ap_south ap_south
+ON us_west.user_id = ap_south.user_id;
+                
+SELECT 'testme_'||name FROM logs;
+                
+SELECT eventTimestamp, TYPEOF(eventTimestamp) as mytype FROM airplanes;
+                
+SELECT foo.`bar` FROM table; -- must quote nested column
+                
+SELECT "some string literal" FROM mytable; -- a literal
+                
+-- convert EPOCH time to timestamp
+select EPOCH_TO_TIMESTAMP(1593718981) from ev_sample_fraud;
+
+-- convert EPOCH milliseconds to timestamp
+select EPOCHMILLIS_TO_TIMESTAMP(1593718838150) from ev_sample_fraud;
+                
+                
 
