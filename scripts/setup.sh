@@ -114,7 +114,7 @@ echo "Build HBase Tables"
 echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔"
 echo ""
 echo ""
-hbase shell /opt/demo/ApacheConAtHome2020/hbase/tables.tbl 
+hbase shell /opt/demo/CloudDemo2021/hbase/tables.tbl 
 
 echo ""
 echo ""
@@ -127,7 +127,7 @@ echo ""
 
 # Build Kudu tables
 
-impala-shell -i edge2ai-1.dim.local -d default -f  /opt/demo/ApacheConAtHome2020/sql/kudu.sql 
+impala-shell -i edge2ai-1.dim.local -d default -f  /opt/demo/CloudDemo2021/sql/kudu.sql 
 
 echo ""
 echo ""
@@ -139,7 +139,7 @@ echo ""
 echo ""
 
 # Build Hive Tables
-beeline -u jdbc:hive2://edge2ai-1.dim.local:10000/default -f /opt/demo/ApacheConAtHome2020/sql/hive.sql
+beeline -u jdbc:hive2://edge2ai-1.dim.local:10000/default -f /opt/demo/CloudDemo2021/sql/hive.sql
 
 # Postgresql Tables
 # Phoenix Tables
@@ -172,7 +172,7 @@ echo ""
 # https://registry-project.readthedocs.io/en/latest/schema-registry.html#api-examples
 # http://edge2ai-1.dim.local:7788/swagger
 
-for f in /opt/demo/ApacheConAtHome2020/schemas/*.avsc
+for f in /opt/demo/CloudDemo2021/schemas/*.avsc
 do 
 
 echo "Uploading Schema File $f"
@@ -217,7 +217,7 @@ echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔�
 echo ""
 echo ""
 
-for f in /opt/demo/ApacheConAtHome2020/schemas/*.avsc
+for f in /opt/demo/CloudDemo2021/schemas/*.avsc
 do 
 
 schemaname="`echo $f | awk -F'[/_.]' '{print $(NF-1)}'`"
@@ -265,7 +265,7 @@ echo ""
 # load that file TODO
 # itemprice is connector name
 
-for f in /opt/demo/ApacheConAtHome2020/kafkaconnect/*.json
+for f in /opt/demo/CloudDemo2021/kafkaconnect/*.json
 do 
 
 schemaname="`echo $f | awk -F'[/_.]' '{print $(NF-1)}'`"
@@ -286,7 +286,7 @@ echo ""
 echo ""
 
 # Check KC Metrics
-curl -X GET "http://ec2-54-167-28-79.compute-1.amazonaws.com:8585/api/v1/admin/metrics/connect/workers" -H "accept: application/json"
+curl -X GET "http://edge2ai-1.dim.local:8585/api/v1/admin/metrics/connect/workers" -H "accept: application/json"
 
 # Build Alerts
 # edge2ai-1.dim.local
@@ -313,7 +313,7 @@ curl -X GET "http://edge2ai-1.dim.local:9991/api/v1/admin/notifiers"
 echo ""
 
 # POST to Add a new alert Policy
-for f in /opt/demo/ApacheConAtHome2020/alerts/*.json
+for f in /opt/demo/CloudDemo2021/alerts/*.json
 do 
   echo "Load alert $f"
   curl -X POST "http://edge2ai-1.dim.local:8585/api/v1/admin/alertPolicy" -H "accept: application/json" -H "Content-Type: application/json" -d @$f
@@ -344,7 +344,7 @@ flink-yarn-session -tm 2048 -s 2 -d
 
 # Starts Flink SQL
 
-# flink-sql-client embedded -e /opt/demo/ApacheConAtHome2020/conf/sql-env.yaml
+# flink-sql-client embedded -e /opt/demo/CloudDemo2021/conf/sql-env.yaml
 
 echo ""
 echo ""
@@ -382,7 +382,7 @@ HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /
 /opt/cloudera/cem/efm/bin/efm.sh stop
 
 # Run NiFi Parms Load
-source /opt/demo/ApacheConAtHome2020/scripts/setupnifi.sh
+source /opt/demo/CloudDemo2021/scripts/setupnifi.sh
 
 # Get Postgresql jdbc
 cd /opt/demo
