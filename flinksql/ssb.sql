@@ -57,10 +57,47 @@ SELECT scada2.uuid, scada2.systemtime, scada2.temperaturef, scada2.pressure, sca
 SELECT location, station_id, latitude, longitude, observation_time, weather, temperature_string, temp_f, temp_c, relative_humidity, wind_string, wind_dir, wind_degrees, wind_mph, wind_kt, pressure_in, dewpoint_string, dewpoint_f, dewpoint_c FROM weather2 WHERE location is not null and location <> 'null' and trim(location) <> '' and location like '%NJ'
 
 
-SELECT HOP_END(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND) as windowEnd, count("close") as closeCount, sum(cast("close" as float)) as closeSum, avg(cast("close" as float)) as closeAverage, min("close") as closeMin, max("close") as closeMax, sum(case when "close" > 14 then 1 else 0 end) as stockGreaterThan14 FROM stocksraw GROUP BY HOP(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND)
+SELECT HOP_END(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND) as windowEnd, count("close") as closeCount, 
+sum(cast("close" as float)) as closeSum, avg(cast("close" as float)) as closeAverage, min("close") as closeMin, max("close") as closeMax, 
+sum(case when "close" > 14 then 1 else 0 end) as stockGreaterThan14 
+FROM stocksraw 
+GROUP BY HOP(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND)
+                                                  
 
 
-SELECT HOP_END(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND) as windowEnd, count("close") as closeCount, sum(cast("close" as float)) as closeSum, avg(cast("close" as float)) as closeAverage, min("close") as closeMin, max("close") as closeMax, sum(case when "close" > 14 then 1 else 0 end) as stockGreaterThan14 FROM stocksraw WHERE symbol = 'CLDR' GROUP BY HOP(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND)
+SELECT HOP_END(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND) as windowEnd, count("close") as closeCount,
+       sum(cast("close" as float)) as closeSum, avg(cast("close" as float)) as closeAverage, min("close") as closeMin,
+       max("close") as closeMax,
+       sum(case when "close" > 14 then 1 else 0 end) as stockGreaterThan14 
+FROM stocksraw WHERE symbol = 'CLDR' GROUP BY HOP(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND);
+                                                  
+EPOCH_TO_TIMESTAMP(ts),
+                                                  
 
+                                                  
+// parse the JSON record
+var parsedVal = JSON.parse(record);
+// Convert sensor_ts from micro to milliseconds
+parsedVal['sensor_ts'] = Math.round(parsedVal['sensor_ts']/1000);
+// serialize output as JSON
+JSON.stringify(parsedVal);
+                                                         
+SELECT
+  sensor_id as device_id,
+  HOP_END(sensor_ts, INTERVAL '1' SECOND, INTERVAL '30' SECOND) as windowEnd,
+  count(*) as sensorCount,
+  sum(sensor_6) as sensorSum,
+  avg(cast(sensor_6 as float)) as sensorAverage,
+  min(sensor_6) as sensorMin,
+  max(sensor_6) as sensorMax,
+  sum(case when sensor_6 > 70 then 1 else 0 end) as sensorGreaterThan60
+FROM iot_enriched_source
+GROUP BY
+  sensor_id,
+  HOP(sensor_ts, INTERVAL '1' SECOND, INTERVAL '30' SECOND)
+
+           
+                                                         
+                                                         
 
 
