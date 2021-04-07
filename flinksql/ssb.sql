@@ -53,12 +53,16 @@ SELECT HOP_END(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND) as win
        sum(case when `close` > 14 then 1 else 0 end) as stockGreaterThan14 
 FROM stocksraw WHERE symbol = 'CLDR' GROUP BY HOP(eventTimestamp, INTERVAL '1' SECOND, INTERVAL '30' SECOND);
                                                          
+#works
+SELECT scada2.uuid, scada2.systemtime, scada2.temperaturef, scada2.pressure, scada2.humidity, scada2.lux, scada2.proximity, 
+scada2.oxidising,scada2.reducing , scada2.nh3, scada2.gasko,energy2.`current`,                   
+energy2.voltage,energy2.`power`,energy2.`total`,energy2.fanstatus
+FROM energy2 JOIN scada2 ON energy2.systemtime = scada2.systemtime
+                                                 
 
-                                                  
-                                                                          
-                                                                  
-SELECT scada.uuid, scada.systemtime, scada.temperaturef, scada.pressure, scada.humidity, scada.lux, scada.proximity, scada.oxidising,scada.reducing , scada.nh3, scada.gasko,energy.current, energy.voltage,energy.power,energy.total,energy.fanstatus FROM energy JOIN scada ON energy.systemtime = scada.systemtime;
-
+                                                         
+                                                         ####
+                                                         
 SELECT CAST(symbol as STRING) symbol, CAST(uuid as STRING) uuid, ts, dt, open, close, high, volume, low, datetime, 'new-high' message, 
                                                                           'nh' alertcode, CAST(CURRENT_TIMESTAMP AS BIGINT) alerttime 
                                                                           FROM stocks st 
