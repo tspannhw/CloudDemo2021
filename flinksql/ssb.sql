@@ -1,3 +1,17 @@
+SELECT symbol, uuid, ts, dt, `open`, `close`, high, volume, `low`, `datetime`, 'new-high' message, 
+'nh' alertcode, CAST(CURRENT_TIMESTAMP AS BIGINT) alerttime 
+FROM stocksraw st 
+WHERE symbol is not null 
+and symbol <> 'null' and
+trim(symbol) <> '' and 
+CAST(`close` as DOUBLE) > 
+(SELECT MAX(CAST(`close` as DOUBLE)) FROM stocksraw s 
+WHERE s.symbol = st.symbol)
+            
+            
+
+
+
 -- specify Kafka partition key on output
 SELECT foo AS _eventKey FROM sensors
 
