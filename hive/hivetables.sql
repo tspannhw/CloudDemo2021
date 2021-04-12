@@ -7,10 +7,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `iottest`
 LOCATION '/tmp/iottest5';
 
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `iottestjson` 
+CREATE EXTERNAL TABLE `iottestjson` 
 (`id` STRING, `systemtime` STRING, `diskusage` STRING, `memory` INT, 
  `macaddress` STRING, `host` STRING, `end` STRING, `te` STRING, `cpu` INT, `temperature` STRING) 
- STORED AS ORC
+   ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
 LOCATION '/tmp/iot5';
 
 CREATE TABLE IF NOT EXISTS `iottesthv` 
