@@ -1,3 +1,24 @@
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS `iottest` 
+(`id` STRING, `systemtime` STRING, `diskusage` STRING, `memory` INT, 
+ `macaddress` STRING, `host` STRING, `end` STRING, `te` STRING, `cpu` INT, `temperature` STRING) 
+ STORED AS ORC
+LOCATION '/tmp/iottest5';
+
+
+CREATE EXTERNAL TABLE IF NOT EXISTS `iottestjson` 
+(`id` STRING, `systemtime` STRING, `diskusage` STRING, `memory` INT, 
+ `macaddress` STRING, `host` STRING, `end` STRING, `te` STRING, `cpu` INT, `temperature` STRING) 
+ STORED AS ORC
+LOCATION '/tmp/iot5';
+
+CREATE TABLE IF NOT EXISTS `iottesthv` 
+(`id` STRING, `systemtime` STRING, `diskusage` STRING, `memory` INT, 
+ `macaddress` STRING, `host` STRING, `end` STRING, `te` STRING, `cpu` INT, `temperature` STRING);
+
+
+
 CREATE EXTERNAL TABLE IF NOT EXISTS iextradingchart (`date` STRING, open DOUBLE, high DOUBLE, low DOUBLE, close DOUBLE, volume INT, unadjustedVolume INT, change DOUBLE, changePercent DOUBLE, vwap DOUBLE, label STRING, changeOverTime INT)
 STORED AS ORC
 LOCATION '/iextradingchart';
