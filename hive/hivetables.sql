@@ -15,7 +15,9 @@ LOCATION '/tmp/iot5';
 
 CREATE TABLE IF NOT EXISTS `iottesthv` 
 (`id` STRING, `systemtime` STRING, `diskusage` STRING, `memory` INT, 
- `macaddress` STRING, `host` STRING, `end` STRING, `te` STRING, `cpu` INT, `temperature` STRING);
+ `macaddress` STRING, `host` STRING, `end` STRING, `te` STRING, `cpu` INT, `temperature` STRING)
+TBLPROPERTIES
+('transactional'='true', 'transactional_properties'='insert_only')
 
 
 
