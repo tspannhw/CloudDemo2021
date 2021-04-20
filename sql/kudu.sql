@@ -34,6 +34,7 @@ uuid STRING, `ts` TIMESTAMP,
 `title` STRING, `description` STRING, 
 `pubDate` STRING, 
 `point` STRING,
+	 `latitude` DOUBLE, `longitude` DOUBLE, 
 PRIMARY KEY (uuid)
 )
 PARTITION BY HASH PARTITIONS 4
