@@ -140,6 +140,7 @@ echo ""
 
 # Build Hive Tables
 beeline -u jdbc:hive2://edge2ai-1.dim.local:10000/default -f /opt/demo/CloudDemo2021/sql/hive.sql
+beeline -u jdbc:hive2://edge2ai-1.dim.local:10000/default -f /opt/demo/CloudDemo2021/hive/hivetables.sql
 
 # Postgresql Tables
 # Phoenix Tables
