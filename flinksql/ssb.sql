@@ -1,3 +1,13 @@
+select weather2.temperature_string, weather2.weather,
+       weather2.observation_time, weather2.station_id, weather2.wind_string, weather2.location,transcomevents.`title`, transcomevents.latitude, transcomevents.longitude, transcomevents.`ts`
+from weather2
+FULL OUTER JOIN transcomevents
+ON weather2.latitude = transcomevents.latitude
+and weather2.longitude = transcomevents.longitude
+
+
+
+
 SELECT symbol, uuid, ts, dt, `open`, `close`, high, volume, `low`, `datetime`, 'new-high' message, 
 'nh' alertcode, CAST(CURRENT_TIMESTAMP AS BIGINT) alerttime 
 FROM stocksraw st 
