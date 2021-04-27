@@ -6,7 +6,23 @@ ON weather2.latitude = transcomevents.latitude
 and weather2.longitude = transcomevents.longitude
 
 
-
+select weather2.temperature_string, weather2.weather,
+       weather2.observation_time, weather2.station_id, weather2.wind_string, weather2.location,transcomevents.`title`, transcomevents.latitude, transcomevents.longitude, transcomevents.`ts`,
+       
+       
+       (
+   3959 *
+   acos(cos(radians(weather2.latitude)) * 
+   cos(radians(transcomevents.latitude)) * 
+   cos(radians(transcomevents.longitude) - 
+   radians(weather2.longitude)) + 
+   sin(radians(weather2.latitude)) * 
+   sin(radians(transcomevents.latitude )))
+) AS distance 
+from weather2
+FULL OUTER JOIN transcomevents
+ON weather2.latitude = transcomevents.latitude
+and weather2.longitude = transcomevents.longitude
 
 SELECT symbol, uuid, ts, dt, `open`, `close`, high, volume, `low`, `datetime`, 'new-high' message, 
 'nh' alertcode, CAST(CURRENT_TIMESTAMP AS BIGINT) alerttime 
