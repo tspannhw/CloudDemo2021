@@ -39,7 +39,6 @@ cd /opt/demo
 git clone https://github.com/tspannhw/CloudDemo2021
 git clone https://github.com/tspannhw/meetup-sensors
 git clone https://github.com/tspannhw/FlinkSQLDemo
-git clone https://github.com/tspannhw/ApacheConAtHome2020
 git clone https://github.com/tspannhw/retail-dynamic-shelf-pricing
 git clone https://github.com/tspannhw/SmartWeather
 git clone https://github.com/tspannhw/ClouderaPublicCloudCDFWorkshop
@@ -48,7 +47,6 @@ git clone https://github.com/tspannhw/SmartStocks
 chmod -R 777 /opt/demo/SmartStocks
 chmod -R 777 /opt/demo/FlinkSQLDemo
 chmod -R 777 /opt/demo/meetup-sensors
-chmod -R 777 /opt/demo/ApacheConAtHome2020
 chmod -R 777 /opt/demo/CloudDemo2021
 chmod -R 777 /opt/demo/retail-dynamic-shelf-pricing
 
@@ -105,7 +103,7 @@ HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /warehouse/tablespace/managed/hive/
 # Permission denied: user=nifi, access=EXECUTE, inode="/warehouse/tablespace/managed/hive/hv_stocks":hive:hive:drwxrwx---
 
 
-cd /opt/demo/ApacheConAtHome2020
+cd /opt/demo/CloudDemo2021
 
 echo ""
 echo ""
@@ -132,7 +130,7 @@ impala-shell -i edge2ai-1.dim.local -d default -f  /opt/demo/CloudDemo2021/sql/k
 echo ""
 echo ""
 echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔"
-echo " Building Apache Hive ORC Tx Tables"
+echo " Building Apache Hive ORC ACID Tx Tables"
 echo ""
 echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔"
 echo ""
@@ -342,7 +340,7 @@ echo ""
 
 # Flink SQL Session
 
-flink-yarn-session -tm 2048 -s 2 -d
+# flink-yarn-session -tm 2048 -s 2 -d
 
 # Starts Flink SQL
 
