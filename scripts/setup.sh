@@ -93,6 +93,8 @@ HADOOP_USER_NAME=hdfs hdfs dfs -mkdir -p /cyber
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/weatherapp
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/weatherparquet
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/weatherparquet
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/weatherorc
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/weatherorc
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir -p /tmp/spl
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/spl
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir -p /user/tspann/prices
@@ -132,7 +134,8 @@ impala-shell -i edge2ai-1.dim.local -d default -f  /opt/demo/CloudDemo2021/sql/k
 echo ""
 echo ""
 echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔"
-echo " Building Apache Hive ORC ACID Tx Tables"
+echo " Building Apache 
+ORC ACID Tx Tables"
 echo ""
 echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔"
 echo ""
