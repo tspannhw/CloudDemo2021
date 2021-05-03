@@ -19,17 +19,17 @@ yum -y install git curl wget gunzip gzip tar unzip zip
 # /opt/demo/nifi-toolkit-1.12.0/bin/cli.sh nifi import-param-context -u http://localhost:8080 -i retail.json
 # https://nifi.apache.org/docs/nifi-docs/html/toolkit-guide.html
 
-echo "Download NiFi Toolkit"
+# echo "Download NiFi Toolkit"
 
 # Download NiFi Toolkit
 #
-cd /opt/demo
-wget https://apache.claz.org/nifi/1.13.2/nifi-toolkit-1.13.2-bin.zip
-unzip /opt/demo/nifi-toolkit-1.13.2-bin.zip
+# cd /opt/demo
+# wget https://apache.claz.org/nifi/1.13.2/nifi-toolkit-1.13.2-bin.zip
+# unzip /opt/demo/nifi-toolkit-1.13.2-bin.zip
 
 echo "Load Parameter Contexts"
 
-for f in /opt/demo/ApacheConAtHome2020/parameters/*.json
+for f in /opt/demo/CloudDemo2021/parameters/*.json
 do 
 
 echo "Uploading Parameter File $f"
@@ -60,11 +60,11 @@ echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔�
 
 # List all process groups
 
-/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-list -u http://edge2ai-1.dim.local:8080   
+# /opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-list -u http://edge2ai-1.dim.local:8080   
 
 # List parms
 
-/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi list-param-contexts -u http://edge2ai-1.dim.local:8080 -verbose  
+# /opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi list-param-contexts -u http://edge2ai-1.dim.local:8080 -verbose  
 
 # Set parameters to pgs
 # pgid => parameter group id
