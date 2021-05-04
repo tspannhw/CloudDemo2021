@@ -190,7 +190,7 @@ echo ""
 
 # Upload body
 
-curl -X POST "http://edge2ai-1.dim.local:7788/api/v1/schemaregistry/schemas/$schemaname/versions/upload?branch=MASTER&disableCanonicalCheck=false" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "file=@/opt/demo/ApacheConAtHome2020/schemas/$schemaname.avsc;type=application/json" -F "description=schemaname"
+curl -X POST "http://edge2ai-1.dim.local:7788/api/v1/schemaregistry/schemas/$schemaname/versions/upload?branch=MASTER&disableCanonicalCheck=false" -H "accept: application/json" -H "Content-Type: multipart/form-data" -F "file=@/opt/demo/CloudDemo2021/schemas/$schemaname.avsc;type=application/json" -F "description=schemaname"
 
 echo "Added."
 echo ""
@@ -277,7 +277,7 @@ schemaname="`echo $f | awk -F'[/_.]' '{print $(NF-1)}'`"
 echo "Creating Kafka Connectors for each [$schemaname]"
 echo ""
 
-curl -X PUT "http://edge2ai-1.dim.local:8585/api/v1/admin/kafka-connect/connectors/$schemaname" -H "accept: application/json" -H "Content-Type: application/json" -d @/opt/demo/ApacheConAtHome2020/kafkaconnect/$schemaname.json
+curl -X PUT "http://edge2ai-1.dim.local:8585/api/v1/admin/kafka-connect/connectors/$schemaname" -H "accept: application/json" -H "Content-Type: application/json" -d @/opt/demo/CloudDemo2021/kafkaconnect/$schemaname.json
 
 done
 
