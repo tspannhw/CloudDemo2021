@@ -362,7 +362,7 @@ echo ""
 # Get Toolkit
 #wget https://archive.apache.org/dist/nifi/1.11.4/nifi-toolkit-1.11.4-bin.tar.gz
 #tar -xvf nifi-toolkit*.tar.gz
-#/opt/demo/ApacheConAtHome2020/scripts/nifi-toolkit-1.11.4/bin/cli.sh registry list-buckets -u http://edge2ai-1.dim.local:18080
+#/opt/demo/CloudDemo2021/scripts/nifi-toolkit-1.11.4/bin/cli.sh registry list-buckets -u http://edge2ai-1.dim.local:18080
 #registry create-flow -verbose -u http://edge2ai-1.dim.local:18080 -b 250a5ae5-ced8-4f4e-8b3b-01eb9d47a0d9 --flowName iotFlow
 #registry import-flow-version -verbose -u http://somesite.compute-1.amazonaws.com:18080 -f a5a4ac59-9aeb-416e-937f-e601ca8beba9 -i flows/iot-1.json
 # registry list-flows  -u http://ec2-35-171-154-174.compute-1.amazonaws.com:18080 -b 250a5ae5-ced8-4f4e-8b3b-01eb9d47a0d9
