@@ -9,7 +9,7 @@ CREATE TABLE VACCINE
 
 CREATE TABLE cdc.transcomevents ( 
 uuid varchar2(64), 
-ts TIMESTAMP,  
+ts FLOAT(126),  
 title varchar2(255), 
 description varchar2(255), 
 pubDate varchar2(255), 
