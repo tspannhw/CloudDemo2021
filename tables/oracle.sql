@@ -9,12 +9,12 @@ CREATE TABLE VACCINE
 
 CREATE TABLE cdc.transcomevents ( 
 uuid varchar2(64), 
-ts FLOAT(126),  
-title varchar2(255), 
-description varchar2(255), 
+ts NUMBER(20),  
+title varchar2(2048), 
+description varchar2(2048), 
 pubDate varchar2(255), 
 point varchar2(255),
-	 latitude FLOAT(126), 
-   longitude FLOAT(126), 
+	 latitude NUMBER(25,2), 
+   longitude NUMBER(25,2), 
     CONSTRAINT uuid_pk PRIMARY KEY (uuid)
 );
