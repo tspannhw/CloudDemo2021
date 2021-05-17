@@ -2,4 +2,6 @@
 create 'stocks', 'stock_details'
 create 'socketcache' ,'socketcache'
 create 'iottest','iot_details'
+create 'scada','scada'
+create 'energy','energy'
 exit
