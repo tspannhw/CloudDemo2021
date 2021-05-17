@@ -100,6 +100,10 @@ HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/spl
 HADOOP_USER_NAME=hdfs hdfs dfs -mkdir -p /user/tspann/prices
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /user/tspann/prices
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/weatherapp
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/sensors2
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/sensors2
+HADOOP_USER_NAME=hdfs hdfs dfs -mkdir /tmp/scada2
+HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /tmp/scada2
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /
 HADOOP_USER_NAME=hdfs hdfs dfs -chmod -R 777 /warehouse/tablespace/managed/hive/
 
