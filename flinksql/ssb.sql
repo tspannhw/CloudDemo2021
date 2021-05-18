@@ -1,3 +1,12 @@
+select * from scada2
+where temperaturef > 89
+
+SELECT scada2.uuid, scada2.systemtime, scada2.temperaturef, scada2.pressure, scada2.humidity, scada2.lux, scada2.proximity, 
+scada2.oxidising,scada2.reducing , scada2.nh3, scada2.gasko,energy2.`current`,                   
+energy2.voltage,energy2.`power`,energy2.`total`,energy2.fanstatus
+FROM energy2 JOIN scada2 ON energy2.systemtime = scada2.systemtime
+
+
 select weather2.temperature_string, weather2.weather,
        weather2.observation_time, weather2.station_id, weather2.wind_string, weather2.location,transcomevents.`title`, transcomevents.latitude, transcomevents.longitude, transcomevents.`ts`
 from weather2
