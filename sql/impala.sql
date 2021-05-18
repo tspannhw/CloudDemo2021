@@ -42,3 +42,4 @@ PRIMARY KEY (uuid) )
 STORED AS PARQUET
 LOCATION '/tmp/sensors2';
 
+# Energy2 is directory of JSON
