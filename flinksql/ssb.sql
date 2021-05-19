@@ -6,6 +6,11 @@ scada2.oxidising,scada2.reducing , scada2.nh3, scada2.gasko,energy2.`current`,
 energy2.voltage,energy2.`power`,energy2.`total`,energy2.fanstatus
 FROM energy2 JOIN scada2 ON energy2.systemtime = scada2.systemtime
 
+select `power`, voltage, `current`,TUMBLE_END(eventTimestamp, INTERVAL '5' MINUTE) AS window_end_timestamp
+from energy2
+where `power` > 7
+GROUP BY TUMBLE(eventTimestamp, INTERVAL '5' MINUTE),`power`, voltage, `current`
+
 
 select weather2.temperature_string, weather2.weather,
        weather2.observation_time, weather2.station_id, weather2.wind_string, weather2.location,transcomevents.`title`, transcomevents.latitude, transcomevents.longitude, transcomevents.`ts`
