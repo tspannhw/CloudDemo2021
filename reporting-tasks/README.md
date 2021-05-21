@@ -18,6 +18,8 @@ nifi get-reporting-task  --baseUrl http://edge2ai-1.dim.local:8080 -verbose --re
 
 nifi get-reporting-task  --baseUrl http://edge2ai-1.dim.local:8080 -verbose -ot json --reportingTaskId 
 
+nifi-toolkit-1.13.2/bin/cli.sh nifi get-reporting-task  --baseUrl http://edge2ai-1.dim.local:8080 -verbose -ot json --reportingTaskId  81491eef-0179-1000-0000-000053e6275a > provenance.json
+
 # Import them from file
 
 nifi create-reporting-task   --baseUrl http://edge2ai-1.dim.local:8080 -verbose -i file.json
