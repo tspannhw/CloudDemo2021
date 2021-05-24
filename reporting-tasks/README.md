@@ -30,3 +30,6 @@ nifi start-reporting-tasks --baseUrl http://edge2ai-1.dim.local:8080 -verbose
  
  
 Need to export readers/writers
+
+
+change all URLS and IPs to edge2ai-1.dim.local
