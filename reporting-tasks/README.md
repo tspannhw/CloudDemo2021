@@ -29,3 +29,4 @@ nifi create-reporting-task   --baseUrl http://edge2ai-1.dim.local:8080 -verbose 
 nifi start-reporting-tasks --baseUrl http://edge2ai-1.dim.local:8080 -verbose  
  
  
+Need to export readers/writers
