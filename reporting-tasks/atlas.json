@@ -3,7 +3,6 @@
     "clientId" : "f1211750-30f1-4a46-8167-da93a170cca9",
     "version" : 10
   },
-  "id" : "5e313c34-0aba-13e4-0000-0000676400f2",
   "uri" : "http://edge2ai-1.dim.local:8080/nifi-api/reporting-tasks/5e313c34-0aba-13e4-0000-0000676400f2",
   "permissions" : {
     "canRead" : true,
