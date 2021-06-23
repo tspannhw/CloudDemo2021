@@ -55,6 +55,8 @@ echo "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔�
 
 /opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-enable-services  -u http://edge2ai-1.dim.local:8080 --processGroupId root  
 
+/opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi create-reporting-task --baseUrl http://edge2ai-1.dim.local:8080 -verbose -i /opt/demo/CloudDemo2021/reporting-tasks/atlas.json
+ 
 # List all process groups
 
 # /opt/demo/nifi-toolkit-1.13.2/bin/cli.sh nifi pg-list -u http://edge2ai-1.dim.local:8080   
